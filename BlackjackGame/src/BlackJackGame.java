@@ -7,10 +7,13 @@ public class BlackJackGame
 		
 		public static void main(String[] args)
 			{
-				greetUser();
-				card();
 				
+				greetUser();
+				defineCard();
+				gameStart();
 			}
+
+		
 
 		private static void greetUser()
 			{
@@ -30,7 +33,7 @@ public class BlackJackGame
 				
 			}
 
-		public static void card()
+		public static void defineCard()
 			{
 			
 				
@@ -52,12 +55,12 @@ public class BlackJackGame
 				card[10]="Jack";
 				card[11]="Queen";
 				card[12]="King";
-		
-		int randomNum = (int) (Math.random( ) * 4);
-		int randomNum2 = (int) (Math.random( ) * 13);
-		System.out.println(card[randomNum2] + " of " + suit[randomNum]);
 				
 			}
-		
+		public static void gameStart()
+			{
+				// TODO Auto-generated method stub
+				
+			}
 
 	}
