@@ -59,7 +59,7 @@ public class BlackJackGame
 			}
 		public static void gameStart()
 			{
-				// TODO Auto-generated method stub
+				system.out.println("hello world");
 				
 			}
 
