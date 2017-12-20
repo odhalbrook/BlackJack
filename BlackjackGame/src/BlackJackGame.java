@@ -59,7 +59,7 @@ public class BlackJackGame
 			}
 		public static void gameStart()
 			{
-				system.out.println("hello world");
+				System.out.println("hello world");
 				
 			}
 
