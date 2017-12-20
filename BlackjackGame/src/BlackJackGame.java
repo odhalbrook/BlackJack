@@ -59,7 +59,7 @@ public class BlackJackGame
 			}
 		public static void gameStart()
 			{
-				System.out.println("hello world");
+				//Auto-Generated Method Stub
 				
 			}
 
