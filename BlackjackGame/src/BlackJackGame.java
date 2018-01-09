@@ -2,7 +2,6 @@ import java.util.Scanner;
 
 public class BlackJackGame
 	{
-		static	String [] suit = new String [4];
 		static	String [] card = new String [13];
 		
 		public static void main(String[] args)
@@ -36,12 +35,6 @@ public class BlackJackGame
 		public static void defineCard()
 			{
 			
-				
-				suit[0] = "hearts";
-				suit[1] = "diamonds";
-				suit[2] = "clubs";
-				suit[3] = "spades";
-			
 				card[0]="one";
 				card[1]="two";
 				card[2]="three";
@@ -59,7 +52,7 @@ public class BlackJackGame
 			}
 		public static void gameStart()
 			{
-				//Auto-Generated Method Stub
+				
 				
 			}
 
