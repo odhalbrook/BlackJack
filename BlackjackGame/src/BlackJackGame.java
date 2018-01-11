@@ -5,8 +5,8 @@ public class BlackJackGame
 		static	String [] card = new String [13];
 		static int playerHand = 0;
 		static int dealerHand = 0;
+		static int randomNum;
 		static int value;
-		static int randomNum = (int) (Math.random() *13);
 		static Scanner userInput = new Scanner(System.in);
 		
 		public static void main(String[] args)
@@ -15,12 +15,12 @@ public class BlackJackGame
 				defineCard();
 				assignValue();
 				gameStart();
-				
+				dealCardPlayer();
+				dealCardDealer();
 				
 
 			}
 
-	
 		public static void greetUser()
 			{
 				System.out.println("What is your name?");
@@ -114,15 +114,39 @@ public class BlackJackGame
 		        		break;
 		        			}
 		        }
-		}		
+		}	
+
+		
+		public static String dealCardPlayer()
+			{
+				randomNum = (int) (Math.random() * 13);
+				assignValue();
+				playerHand += value;
+				return (card[randomNum]);
+				
+			}
+
+		public static String dealCardDealer()
+			{
+				randomNum = (int) (Math.random() * 13);
+				assignValue();
+				dealerHand += value;
+				return (card[randomNum]);
+				
+			}
 
 		public static void gameStart()
 			{
 				System.out.println("Welcome to Blackjack");
 				
-				System.out.println("You have been dealt a " + card[randomNum] + " and a " + card[randomNum]);
-				System.out.println("The dealer has a face down card and is showing the " + card);
-				
+				System.out.println("You have been dealt a " + dealCardPlayer() + " and a " + dealCardPlayer());
+				if(playerHand == 21 || card[0].equals(21))
+					{
+						System.out.println("You have a BlackJack, you WIN!");
+						System.exit(0);
+					}
+				System.out.println("Which equals " + playerHand);
+				System.out.println("The dealer has a face down card and is showing a " + dealCardDealer());
 			}
 
 	}
