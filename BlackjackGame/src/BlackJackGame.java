@@ -8,6 +8,8 @@ public class BlackJackGame
 		static int randomNum;
 		static int value;
 		static Scanner userInput = new Scanner(System.in);
+		static boolean playerAce = false;
+		static boolean dealerAce = false;
 		
 		public static void main(String[] args)
 			{
@@ -17,8 +19,8 @@ public class BlackJackGame
 				gameStart();
 				dealCardPlayer();
 				dealCardDealer();
-				
-
+				playerTurn();
+				results();
 			}
 
 		public static void greetUser()
@@ -62,7 +64,7 @@ public class BlackJackGame
 		        {
 		        	case "Ace":
 		        			{
-		        		value = 1;
+		        		value = 11;
 		        		break;
 		        			}
 		        	case "Two":
@@ -120,6 +122,10 @@ public class BlackJackGame
 		public static String dealCardPlayer()
 			{
 				randomNum = (int) (Math.random() * 13);
+				if (card[randomNum].equals("Ace"))
+					{
+						playerAce = true;
+					}
 				assignValue();
 				playerHand += value;
 				return (card[randomNum]);
@@ -129,6 +135,10 @@ public class BlackJackGame
 		public static String dealCardDealer()
 			{
 				randomNum = (int) (Math.random() * 13);
+				if (card[randomNum].equals("Ace"))
+					{
+						dealerAce = true;
+					}
 				assignValue();
 				dealerHand += value;
 				return (card[randomNum]);
@@ -140,13 +150,69 @@ public class BlackJackGame
 				System.out.println("Welcome to Blackjack");
 				
 				System.out.println("You have been dealt a " + dealCardPlayer() + " and a " + dealCardPlayer());
-				if(playerHand == 21 || card[0].equals(21))
+				System.out.println("Which equals " + playerHand);
+				if(playerHand == 21)
 					{
 						System.out.println("You have a BlackJack, you WIN!");
 						System.exit(0);
 					}
-				System.out.println("Which equals " + playerHand);
+				if (playerHand > 21)
+					{
+						playerHand = playerHand - 10;
+					}
+				dealCardDealer();
 				System.out.println("The dealer has a face down card and is showing a " + dealCardDealer());
+				if(dealerHand == 21)
+					{
+						System.out.println("The Dealer has a Blackjack, you lose.");
+						System.exit(0);
+					}
+				else if (dealerHand > 21)
+					{
+						dealerHand = dealerHand - 10;
+					}
 			}
 
+		public static void playerTurn()
+			{
+				boolean playing = true;
+				
+				while (playing)
+					{
+						System.out.println("Do you want to");
+						System.out.println("Hit or Stay?");
+						String answer = userInput.nextLine();
+						
+						if(answer.equals("Stay") || answer.equals("stay"))
+							{
+								playing = false;
+								break;
+							}
+						else if(answer.equals("Hit") || answer.equals("hit"))
+							{
+								System.out.println(playerHand);
+								System.out.println("You have been dealt a " + dealCardPlayer() + " for a total of " + playerHand);
+								if (playerHand > 21 && playerAce == true)
+									{
+										playerHand = playerHand - 10;
+										playerAce = false;
+									}
+								if (playerHand > 21)
+									{
+										System.out.println("You busted");
+										playing = false;
+										break;
+									}
+							}
+					}
+				
+			}
+
+		private static void results()
+			{
+				// TODO Auto-generated method stub
+				
+			}
+
+		
 	}
