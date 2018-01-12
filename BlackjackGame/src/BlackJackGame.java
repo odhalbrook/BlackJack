@@ -127,7 +127,7 @@ public class BlackJackGame
 						playerAce = true;
 					}
 				assignValue();
-				playerHand += value;
+				playerHand = playerHand + value;
 				return (card[randomNum]);
 				
 			}
@@ -167,7 +167,7 @@ public class BlackJackGame
 						System.out.println("The Dealer has a Blackjack, you lose.");
 						System.exit(0);
 					}
-				else if (dealerHand > 21)
+				if (dealerHand > 21)
 					{
 						dealerHand = dealerHand - 10;
 					}
@@ -179,6 +179,7 @@ public class BlackJackGame
 				
 				while (playing)
 					{
+						System.out.println(playerHand);
 						System.out.println("Do you want to");
 						System.out.println("Hit or Stay?");
 						String answer = userInput.nextLine();
@@ -190,7 +191,7 @@ public class BlackJackGame
 							}
 						else if(answer.equals("Hit") || answer.equals("hit"))
 							{
-								System.out.println(playerHand);
+								
 								System.out.println("You have been dealt a " + dealCardPlayer() + " for a total of " + playerHand);
 								if (playerHand > 21 && playerAce == true)
 									{
