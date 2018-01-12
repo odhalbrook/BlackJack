@@ -115,8 +115,13 @@ public class BlackJackGame
 		        		value = 10;
 		        		break;
 		        			}
+		        		default: 
+		        				{
+		        					value = 0;
+		        				}
+		        			}
 		        }
-		}	
+			
 
 		
 		public static String dealCardPlayer()
@@ -127,7 +132,7 @@ public class BlackJackGame
 						playerAce = true;
 					}
 				assignValue();
-				playerHand = playerHand + value;
+				playerHand += value;
 				return (card[randomNum]);
 				
 			}
