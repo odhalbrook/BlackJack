@@ -10,6 +10,7 @@ public class BlackJackGame
 		static Scanner userInput = new Scanner(System.in);
 		static boolean playerAce = false;
 		static boolean dealerAce = false;
+		static boolean dealerBust = false;
 		
 		public static void main(String[] args)
 			{
@@ -17,9 +18,8 @@ public class BlackJackGame
 				defineCard();
 				assignValue();
 				gameStart();
-				dealCardPlayer();
-				dealCardDealer();
 				playerTurn();
+				dealerTurn();
 				results();
 			}
 
@@ -184,7 +184,6 @@ public class BlackJackGame
 				
 				while (playing)
 					{
-						System.out.println(playerHand);
 						System.out.println("Do you want to");
 						System.out.println("Hit or Stay?");
 						String answer = userInput.nextLine();
@@ -207,17 +206,46 @@ public class BlackJackGame
 									{
 										System.out.println("You busted");
 										playing = false;
-										break;
 									}
 							}
 					}
 				
 			}
+		
+
+		private static void dealerTurn()
+			{
+				boolean dealerPlaying = true;
+				
+				while(dealerPlaying)
+					{
+					if(dealerHand >= 21)
+						{
+							dealerPlaying = false;
+							dealerBust = true;
+						}
+					else if(dealerHand <= 16)
+						{
+							dealCardDealer();
+						}
+					else if(dealerHand >= 17)
+						{
+							dealerPlaying = false;
+						}
+					}
+			}
+
 
 		private static void results()
 			{
-				// TODO Auto-generated method stub
-				
+				if(playerHand > dealerHand && dealerBust == false)
+					{
+						System.out.println("The dealer had a " + dealerHand + " and you had a " + playerHand + ", You win!!!");
+					}
+				else if(dealerHand > playerHand && dealerBust == false)
+					{
+						System.out.println("The dealer had a " + dealerHand + " and you had a " + playerHand + ", You lose :(");
+					}
 			}
 
 		
