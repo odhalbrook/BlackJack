@@ -154,6 +154,20 @@ public class BlackJackGame
 			{
 				System.out.println("Welcome to Blackjack");
 				
+				System.out.println("Do you want to check the deck?");
+				String yesNo = userInput.nextLine();
+				
+				if(yesNo.equals("yes") || yesNo.equals("Yes"))
+					{
+						for (String c : card)
+							{
+								System.out.println(c + " of Spades");
+								System.out.println(c + " of Clubs");
+								System.out.println(c + " of Diamonds");
+								System.out.println(c + " of Hearts");
+							}
+					}
+				
 				System.out.println("You have been dealt a " + dealCardPlayer() + " and a " + dealCardPlayer());
 				System.out.println("Which equals " + playerHand);
 				if(playerHand == 21)
@@ -184,8 +198,7 @@ public class BlackJackGame
 				
 				while (playing)
 					{
-						System.out.println("Do you want to");
-						System.out.println("Hit or Stay?");
+						System.out.println("Do you want to Hit or Stay?");
 						String answer = userInput.nextLine();
 						
 						if(answer.equals("Stay") || answer.equals("stay"))
