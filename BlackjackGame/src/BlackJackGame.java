@@ -262,11 +262,18 @@ public class BlackJackGame
 					{
 						System.out.println("The dealer had a " + dealerHand + " and you had a " + playerHand + ", You win!!!");
 						playerBet = playerBet + bet;
+						System.out.println("You have " + playerBet);
 					}
 				else if(dealerHand > playerHand && dealerBust == false)
 					{
 						System.out.println("The dealer had a " + dealerHand + " and you had a " + playerHand + ", You lose :(");
 						playerBet = playerBet - bet;
+						System.out.println("You have " + playerBet);
+					}
+				if(playerBet == 0;)
+					{
+					System.out.println("You have no money left, hope you still have money for food.");
+					System.exit(0);
 					}
 				System.out.println("Do you want to play again?");
 				String answer2 = userInput.nextLine();
