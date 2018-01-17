@@ -11,16 +11,23 @@ public class BlackJackGame
 		static boolean playerAce = false;
 		static boolean dealerAce = false;
 		static boolean dealerBust = false;
+		static int playerBet = 100;
+		static int bet;
 		
 		public static void main(String[] args)
 			{
 				//greetUser();
 				defineCard();
 				assignValue();
+				System.out.println("Welcome to Blackjack");
+			boolean playAgain = true;
+			while(playAgain)
+				{
 				gameStart();
 				playerTurn();
 				dealerTurn();
 				results();
+				}
 			}
 
 		public static void greetUser()
@@ -152,7 +159,6 @@ public class BlackJackGame
 
 		public static void gameStart()
 			{
-				System.out.println("Welcome to Blackjack");
 				
 				System.out.println("Do you want to check the deck?");
 				String yesNo = userInput.nextLine();
@@ -167,7 +173,8 @@ public class BlackJackGame
 								System.out.println(c + " of Hearts");
 							}
 					}
-				
+				System.out.println("How much do you want to bet");
+				bet = userInput.nextInt();
 				System.out.println("You have been dealt a " + dealCardPlayer() + " and a " + dealCardPlayer());
 				System.out.println("Which equals " + playerHand);
 				if(playerHand == 21)
@@ -254,11 +261,21 @@ public class BlackJackGame
 				if(playerHand > dealerHand && dealerBust == false)
 					{
 						System.out.println("The dealer had a " + dealerHand + " and you had a " + playerHand + ", You win!!!");
+						playerBet = playerBet + bet;
 					}
 				else if(dealerHand > playerHand && dealerBust == false)
 					{
 						System.out.println("The dealer had a " + dealerHand + " and you had a " + playerHand + ", You lose :(");
+						playerBet = playerBet - bet;
 					}
+				System.out.println("Do you want to play again?");
+				String answer2 = userInput.nextLine();
+				
+				if(answer2.equals("No") || answer2.equals("no"))
+					{
+						System.exit(0);
+					}
+					
 			}
 
 		
